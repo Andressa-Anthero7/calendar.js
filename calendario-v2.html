@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='pt-br'>
+  <head>
+    <meta charset='utf-8' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js'></script>
+    <script>
+    		document.addEventListener('DOMContentLoaded', function() {
+    		 const lista = new Array();
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+        		 locale: 'pt-br',
+        	  timeZone: 'UTC',
+        	  initialView: 'timeGridWeek',
+        	  selectable:true,
+        	  timeFormat: 'HH:mm',
+        	  editable: true,
+        	  headerToolbar: {
+					  		left: 'prev next',
+						    center: 'title',
+						    right: 'timeGridWeek,timeGridDay' // user can switch between the two
+
+					  },
+					  buttonText: {
+			        
+			        week: 'Semana',
+			        day: 'Hoje',
+			       
+			      },
+		       select: function(info) {
+             var titulo = 'Atendimento';
+        	   var horario = info.startStr;
+
+        	   //alert(titulo+' '+horario);
+        	  
+        	   calendar.addEvent({
+              	title: titulo,
+              	start: horario,
+             
+            });
+        	  lista.push({title:titulo,start:horario});
+        	  //alert(lista[0].title+' '+ lista[0].start)
+
+        	  // Convert (js array) to (json object)
+						JsonObject = JSON.parse(JSON.stringify(lista));
+						//alert(JsonObject[0].title)
+					
+
+        	  
+
+        	   
+        	   
+        	   
+        	    
+        	 },
+
+
+
+        	 events: events: '/banco.json',,
+        	    
+        	    
+        
+
+      	
+
+        	 
+
+        });
+
+        calendar.render();
+      });
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+  </head>
+  <body>
+    <div id='calendar'></div>
+  </body>
+</html>

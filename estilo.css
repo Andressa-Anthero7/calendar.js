@@ -1,0 +1,15 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	background: hotpink;
+}
+
+#calendar{
+	max-width: 99%;
+	position: relative;
+	left:10px;
+	top:10px;
+}
